@@ -1,0 +1,40 @@
+# OpenWeb CLI Tool Configuration
+# Similar to mise config.toml structure (with name and description)
+
+[wt]
+name = "Web Search"
+description = "General web search (Google)"
+run = "bun run dist/index.js"
+
+[gg]
+name = "Google Search"
+description = "Search specifically on Google"
+run = "bun run dist/index.js --google"
+
+[yt]
+name = "YouTube Search"
+description = "Search on YouTube"
+run = "bun run dist/index.js --youtube"
+
+[gh]
+name = "GitHub Search"
+description = "Search on GitHub"
+run = "bun run dist/index.js --github"
+
+[np]
+name = "NPM Search"
+description = "Search on NPM"
+run = "bun run dist/index.js --npm"
+
+[wti]
+name = "Interactive Mode"
+description = "Interactive mode for selecting search engine"
+run = "bun run dist/index.js -i"
+
+# Usage examples:
+# wt "how to code in typescript"    - Search on Google
+# gg "react tutorial"               - Search on Google
+# yt "javascript tutorial"          - Search on YouTube
+# gh "express server"               - Search on GitHub
+# np "lodash"                       - Search on NPM
+# wti                               - Interactive mode

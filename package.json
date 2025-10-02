@@ -1,0 +1,33 @@
+{
+  "name": "openweb",
+  "version": "1.0.0",
+  "description": "CLI tool to open search queries in multiple platforms (Google, YouTube, GitHub, NPM)",
+  "type": "module",
+  "packageManager": "bun@1.0.0",
+  "main": "dist/index.js",
+  "bin": {
+    "openweb": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsdown && bun link",
+    "dev": "bun run build && bun run --watch src/index.ts"
+  },
+  "keywords": [
+    "cli",
+    "search",
+    "google",
+    "youtube",
+    "github",
+    "npm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "tsdown": "^0.15.4",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.11.0"
+  }
+}
