@@ -9,6 +9,14 @@ import { loadConfig } from "./core/config";
 // Setup graceful exit
 function setupGracefulExit() {
   const cleanup = () => {
+    // Force flush any remaining output
+    if (process.stdout.writable) {
+      process.stdout.write('');
+    }
+    if (process.stderr.writable) {
+      process.stderr.write('');
+    }
+
     // Reset terminal state
     if (process.stdout.isTTY) {
       process.stdout.write('\x1b[?25h'); // Show cursor

@@ -18,17 +18,49 @@ export async function executeTask(
     const command = task.run;
     const [cmd, ...args] = command.split(" ");
 
-    // For Windows, use 'cmd' as shell for better signal handling
-    const isWindows = process.platform === 'win32';
-    const shellCmd = isWindows ? ['cmd', '/c'] : [cmd, ...args];
-
+    // Create a promise that resolves when the process exits
     const proc = Bun.spawn({
-      cmd: shellCmd,
-      args: isWindows ? [command] : args,
-      stdout: "inherit",
-      stderr: "inherit",
+      cmd: [cmd, ...args],
+      stdout: "pipe", // Capture stdout to ensure it gets displayed
+      stderr: "pipe", // Capture stderr to ensure it gets displayed
+      stdin: "inherit",
       env: { ...process.env },
     });
+
+    // Handle stdout
+    const stdoutPromise = new Promise<void>((resolve) => {
+      if (proc.stdout) {
+        proc.stdout.pipeTo(new WritableStream({
+          write(data) {
+            process.stdout.write(data);
+          },
+          close() {
+            resolve();
+          }
+        }));
+      } else {
+        resolve();
+      }
+    });
+
+    // Handle stderr
+    const stderrPromise = new Promise<void>((resolve) => {
+      if (proc.stderr) {
+        proc.stderr.pipeTo(new WritableStream({
+          write(data) {
+            process.stderr.write(data);
+          },
+          close() {
+            resolve();
+          }
+        }));
+      } else {
+        resolve();
+      }
+    });
+
+    // Wait for both stdout and stderr to complete
+    await Promise.all([stdoutPromise, stderrPromise]);
 
     const result = await proc.exited;
 
