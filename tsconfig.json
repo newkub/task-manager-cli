@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Modern Full Stack Configuration (2025)",
+  
+  "compilerOptions": {
+    /* Modern ECMAScript Features */
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "auto",
+    
+    /* Advanced Type Safety */
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "useUnknownInCatchVariables": true,
+    
+    /* Module Resolution */
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "resolvePackageJsonExports": true,
+    "resolvePackageJsonImports": true,
+    
+    /* Bundler & Runtime Optimization */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    
+    /* Development Experience */
+    "types": ["@types/bun"],
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "removeComments": false,
+    
+    /* JSX (Modern Frameworks) */
+    "jsx": "preserve",
+    "jsxImportSource": "react",
+    
+    /* Build Performance */
+
+    // use tsdown insteadเพิ่ม
+  },
+  
+  "include": [
+    "**/*.ts", 
+    "**/*.tsx", 
+    "**/*.mts", 
+    "**/*.cts",
+    "**/*.vue",
+    "**/*.jsx"
+  ],
+  
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/build",
+    "**/.*",
+    "**/*.test.*",
+    "**/*.spec.*",
+    "**/*.bench.*",
+    "**/__tests__/**",
+    "**/__mocks__/**",
+    "**/coverage/**",
+    "**/public/**",
+    "**/cypress/**",
+    "**/playwright/**",
+    "**/storybook-static/**",
+    "**/.cache/**",
+    "**/.next/**",
+    "**/.nuxt/**",
+    "**/.svelte-kit/**",
+    "**/out/**",
+    "**/temp/**",
+    "**/tmp/**",
+    "**/*.min.*",
+    "**/package-lock.json",
+    "**/yarn.lock",
+    "**/pnpm-lock.yaml"
+  ],
+  
+  "references": [
+  ]
+}

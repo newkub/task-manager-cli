@@ -1,0 +1,40 @@
+# Task Manager CLI Configuration
+# Generated on 2025-10-04T05:00:00.000Z
+
+[gg]
+name = "Node.js Version"
+description = "Show Node.js version"
+run = "node --version"
+
+[wt]
+name = "Web Search"
+description = "Search Google with query"
+run = "start https://www.google.com/search?q=%*"
+
+[yt]
+name = "YouTube Search"
+description = "Search YouTube with query"
+run = "start https://www.youtube.com/results?search_query=%*"
+
+[gh]
+name = "GitHub Search"
+description = "Search GitHub repositories"
+run = "start https://github.com/search?q=%*"
+
+[np]
+name = "NPM Search"
+description = "Search NPM packages"
+run = "start https://www.npmjs.com/search?q=%*"
+
+[wti]
+name = "Interactive Mode"
+description = "Interactive mode for selecting search engine"
+run = "echo 'Interactive mode functionality coming soon...'"
+
+# Usage examples:
+# wtask gg                    - Show Node.js version
+# wtask wt "search query"     - Opens Google search
+# wtask yt "tutorial"         - Opens YouTube search
+# wtask gh "react library"    - Opens GitHub search
+# wtask np "lodash"           - Opens NPM search
+# wtask --list                - Show all available tasks

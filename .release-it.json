@@ -1,0 +1,28 @@
+{
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "requireCommits": true
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release v${version}",
+    "releaseNotes": "echo 'New release: v${version}'"
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "out": [
+        "package.json",
+        "task-manager/package.json"
+      ]
+    }
+  },
+  "hooks": {
+    "before:init": [
+      "bun run build"
+    ]
+  }
+}

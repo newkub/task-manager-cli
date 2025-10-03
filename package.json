@@ -1,33 +1,32 @@
 {
-  "name": "openweb",
+  "name": "task-manager-cli",
   "version": "1.0.0",
-  "description": "CLI tool to open search queries in multiple platforms (Google, YouTube, GitHub, NPM)",
+  "description": "A command-line task manager for organizing and tracking tasks",
   "type": "module",
   "packageManager": "bun@1.0.0",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "bin": {
-    "openweb": "dist/index.js"
+    "wtask": "dist/index.js"
   },
   "scripts": {
-    "build": "tsdown && bun link",
-    "dev": "bun run build && bun run --watch src/index.ts"
+    "build": "tsdown --exports --dts && bun link",
+    "dev": "bun run --watch src/index.ts",
+    "lint": "biome check src",
+    "postinstall": "bun run src/init.ts"
   },
-  "keywords": [
-    "cli",
-    "search",
-    "google",
-    "youtube",
-    "github",
-    "npm"
-  ],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
+    "@biomejs/biome": "^2.2.5",
     "@types/bun": "latest",
-    "tsdown": "^0.15.4",
-    "typescript": "^5.9.2"
+    "tsdown": "^0.15.6",
+    "typescript": "^5.9.3"
+  },
+  "module": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
   },
   "dependencies": {
     "@clack/prompts": "^0.11.0"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
